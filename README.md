@@ -6,6 +6,7 @@
 
 # Source
     - Array: problems related to array.
+    - Stack: problems related to stack.
 
 # Reference
     - Geeksforgeeks

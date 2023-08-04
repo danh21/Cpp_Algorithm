@@ -19,6 +19,17 @@ using namespace std;
 
 /* -------------------- PROTOTYPE - START -------------------- */
 /**
+ * @brief initialize stack
+ * 
+ * @tparam type 
+ * @param st 
+ */
+template <typename type>
+void init(stack<type> &st);
+
+
+
+/**
  * @brief display all elements of stack
  * 
  * @tparam type 
@@ -38,6 +49,18 @@ void display(stack<type> st);
  * @param sizeOfStack 
  */
 void deleteMid(stack<int> &st, int sizeOfStack);
+
+
+
+/**
+ * @brief reverse the stack
+ * 
+ * @ref https://practice.geeksforgeeks.org/problems/reverse-a-stack/1    
+ * 
+ * @param St 
+ */
+void Reverse(stack<int> &St);
+
 
 
 
@@ -88,6 +111,9 @@ void display(stack<type> st)
 {
     while (!st.empty()) {
 		cout << st.top();
+        if (typeid(type) == typeid(int))
+            cout << " ";
+
 		st.pop();
 	}
 }
@@ -158,6 +184,38 @@ void deleteMid(stack<int> &st, int sizeOfStack)
             deleteMid(st, sizeOfStack); 
             st.push(top_temp);   
         }
+    }
+}
+
+
+
+void Reverse(stack<int> &St)
+{
+    stack<int> rev;
+    
+    while (!St.empty())
+    {
+        rev.push(St.top());
+        St.pop();
+    }
+    
+    St.swap(rev);
+}
+
+
+
+template <typename type>
+void init(stack<type> &st)
+{
+    int nums, data;
+    
+    cout << "Enter the number of elements: ";
+    cin >> nums;
+
+    cout << "Enter data: \n";
+    for (int i = 0; i < nums; i++) {
+        cin >> data;
+        st.push(data);
     }
 }
 
