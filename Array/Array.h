@@ -400,6 +400,25 @@ int stockBuyAndSell(int n, vector<int> &prices);
  * @return int 
  */
 int maxIndexDiff(int arr[], int size);
+
+
+
+/**
+ * @brief Given an array a[] of positive integers of size n, where each value represents the number of chocolates in a packet. 
+ * Each packet can have a variable number of chocolates. 
+ * There are m students, the task is to distribute chocolate packets among m students such that:
+ *  1. Each student gets exactly one packet.
+ *  2. The difference between maximum number of chocolates given to a student and minimum number of chocolates given to a student is minimum.
+ * 
+ * @ref https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1?page=1&sprint=6ff6f4a5774041b7ad62a176ee94f5f5&sortBy=difficulty
+ * 
+ * @param a number of chocolate packets
+ * @param n size of array a
+ * @param m number of students
+ * @return long long 
+ */
+long long findMinDiff(vector<long long> a, long long n, long long m);
+ 
 /* ----------------------------------------------  CALCULATION ALGORITHM - END  -------------------------------------------- */
 
 
@@ -1335,4 +1354,22 @@ vector<int> subarraySum(vector<int>arr, int size, long long S)
         
     return idxArr;
 }
+
+
+
+long long findMinDiff(vector<long long> a, long long n, long long m)
+{
+    long long minDiff = INT_MAX; 
+    
+    sort(a.begin(), a.end());               // ascending sorting
+    
+    for (long long i = 0; i <= n-m; i++)    // check each cluster
+    {
+        if (a[i+m-1] - a[i] < minDiff)      // check different between maxNum and minNum of that cluster
+            minDiff = a[i+m-1] - a[i];
+    }
+    
+    return minDiff;
+} 
+
 /* ----------------------------------------------------------- FUNCTION - END ------------------------------------------------------- */
